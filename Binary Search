@@ -1,0 +1,120 @@
+1.Binary Search (Iterative)
+
+#include<iostream>
+#include<conio.h>
+using namespace std;
+
+int n, x;
+int BinarySearch(int a[], int n, int x)
+{
+	int low = 1;
+	int high = n;
+	int mid = 0;
+	do
+	{
+		mid = (low + high) / 2;
+
+
+		if (x == a[mid])
+			return mid;
+		else if (x < a[mid])
+		{
+			high = mid - 1;
+		}
+		else if (x > a[mid])
+		{
+			low = mid + 1;
+		}
+	} while (low <= high);
+	return -1;
+}
+int main(void)
+{
+	int a[] = {20,21,22,23,24,25};
+	int x ;
+	cout << "Enter the element to be searched" << endl;
+	cin >> x;
+	int n = sizeof(a) / sizeof(a[0]);
+	int result = BinarySearch(a, n, x);
+	if (result == -1)
+	{
+		cout << "*********************************************" << endl;
+		cout << "Element is not present in array" << endl;
+
+		cout << "*********************************************" << endl;
+	}
+
+	else
+	{
+		cout << "*********************************************" << endl;
+	
+		cout << "Element is present at index: " << result<<endl;
+
+		cout << "*********************************************" << endl;
+	}
+	_getch();
+	return 0;
+
+}
+
+
+
+2.Binary Search(Recursive)
+
+#include<iostream>
+#include<conio.h>
+using namespace std;
+int Binsearch(int a[10], int i, int l, int x)
+{
+	if (i == l)
+	{
+		if (x == a[i])
+		{
+
+			return i;
+		}
+		else
+		{
+			return -1;
+		}
+	}
+	else
+	{
+		int mid = ((l + i) / 2);
+		if (x == a[mid])
+		{
+			return mid;
+		}
+		else if (x < a[mid])
+		{
+			return Binsearch(a, i, mid - 1, x);
+		}
+		else return Binsearch(a, mid + 1, l, x);
+	}
+
+
+};
+int main()
+{
+	int element;
+	int result;
+	int const size = 5;
+	int a[size] = { 1,2,3,4,5,};
+	cout << "Enter the element to be searched : ";
+	cin >> element;
+	result = Binsearch(a, 1, size - 1, element);
+	if (result == -1)
+	{
+		cout << "Element is not present in array";
+	}
+	else
+
+		
+cout << "The element is present at position: " << result + 1;
+	_getch();
+	return 0;
+}
+ 
+
+
+
